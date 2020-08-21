@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a href="/recent/">Recent plots</a>
+    <div>
+      <canvas id="myChart"> </canvas>
+    </div>
+    <div>
+        <form data-url="{% url 'simulation_url' %}" method="post" id="simulateForm">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+                {% endfor %}
+                {% for field in form.visible_fields %}
+                    <div class="fieldWrapper">
+                        {{ field.errors }}
+                            <div class="lable">
+                                {{ field.label_tag }}
+                            </div>
+                            <div class="input">
+                                {{ field }}
+                            </div>
+                        <div id="slider{{ forloop.counter }}" class="slider"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <br>
+                {% endfor %}
+            <input type="button" value="Simulate" id="simulateButton">
+            <input type="button" value="Save" id="saveButton">
+        </form>
+    </div>
+    {% load static %}
+    <script src="{% static 'plot.js' %}"></script>
+
+{% endblock  %}

@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(100, 100, 100);
+}
+
+.chart-container {
+  width: 700px;
+  height: 700px;
+}
+
+.container {
+  margin: auto;
+}
+
+.first {
+  float: left;
+}
+
+.fieldWrapper {
+  float: left;
+  width: 700px;
+}
+
+.slider {
+  float: left;
+  background-color: rgb(135, 211, 139);
+  width: 495px;
+  margin: 3px;
+}
+
+.clear {
+  clear: both;
+}
+
+input {
+  width: 50px;
+  float: left;
+  margin-right: 10px;
+}
+
+input[type=button]{
+  width: 80px;
+}
+
+.lable {
+  float: left;
+  width: 120px;
+  color: rgb(135, 211, 139);;
+}

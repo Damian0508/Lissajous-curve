@@ -10,5 +10,5 @@ class CurveParamaterForm(forms.ModelForm):
     image = forms.CharField(widget= forms.HiddenInput(), required=False)
     class Meta:
         model = LissajousCurve
-        exclude = ['date']
+        exclude = ['date', 'upvotes']
 

@@ -22,8 +22,9 @@ class LissajousCurve(models.Model):
             MaxValueValidator(10),
             MinValueValidator(0.1)
         ])
+    upvotes = models.IntegerField(default=0,
+        validators=[
+            MinValueValidator(0)
+        ])
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to ='plots', default='default.jpg')
-
-    class Meta:
-        ordering = ['-date']

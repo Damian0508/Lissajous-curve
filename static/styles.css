@@ -46,3 +46,17 @@ input[type=button]{
   width: 120px;
   color: rgb(135, 211, 139);;
 }
+
+.vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  background: url('http://i.stack.imgur.com/iqN2k.png');
+  background-position: 0 -25px;
+} 
+
+.vote.on {
+  background-position: 0 2px;
+}

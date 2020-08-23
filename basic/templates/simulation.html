@@ -30,6 +30,31 @@
             <input type="button" value="Save" id="saveButton">
         </form>
     </div>
+    <div class="clear">
+        <br>
+        <h2>Top upvoted</h2>
+    </div>
+    <div>
+        {% for plot in top %}
+            <div class="container">
+            <div class="first">
+                <img src="{{ plot.image.url }}">
+            </div>
+            <div class="second">
+                <p>x frequency: {{ plot.x_frequency }}</p>
+                <p>y frequency: {{ plot.y_frequency }}</p>
+                <p>phase: {{ plot.phase }}</p>
+                <p>simulation time: {{ plot.simulation_time }}</p>
+                <p id="{{ plot.id }}">
+                    Upvotes: {{ plot.upvotes }}
+                </p>
+                <span class="vote" id="{{ plot.id }}"</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
     {% load static %}
     <script src="{% static 'plot.js' %}"></script>
 

@@ -56,6 +56,7 @@ $(function() {
         var canvas = document.getElementById('myChart');
         document.getElementById("id_image").value = canvas.toDataURL();
         var serializedData = $("#simulateForm").serialize();
+        
         $.ajax({
             type: 'POST',
             url: '/save/',

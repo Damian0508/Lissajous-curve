@@ -60,3 +60,21 @@ input[type=button]{
 .vote.on {
   background-position: 0 2px;
 }
+
+.colorSlider{
+  float: left;
+  height: 200px;
+  margin: 5px;
+}
+
+#sliderRed{
+  background-color: red;
+}
+
+#sliderGreen{
+  background-color: green;
+}
+
+#sliderBlue{
+  background-color: blue;
+}

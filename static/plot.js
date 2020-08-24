@@ -40,6 +40,7 @@ $(function() {
     $("#simulateButton").click(function() {
         //simulation validation here
         var serializedData = $("#simulateForm").serialize();
+
         $.ajax({
             type: 'POST',
             url: $("#simulateForm").data('url'),
@@ -47,6 +48,10 @@ $(function() {
             success: function (response)
             {   
                 chart.data.datasets[0].data = generateCurve(response.x_frequency, response.y_frequency, response.phase, response.simulation_time);
+                red = $("#sliderRed").slider("value");
+                green = $("#sliderGreen").slider("value");
+                blue = $("#sliderBlue").slider("value");
+                chart.data.datasets[0].borderColor = `rgb(${red}, ${green}, ${blue})`;
                 chart.update();
             }
         });
@@ -75,6 +80,32 @@ $(function() {
     $("#id_simulation_time").val('1')
 
     //Sliders handling functions
+
+    
+    $("#sliderRed").slider({
+        orientation: "vertical",
+        range: "max",
+        min: 0,
+        max: 255,
+        value: 100,
+    });
+
+    $("#sliderGreen").slider({
+        orientation: "vertical",
+        range: "max",
+        min: 0,
+        max: 255,
+        value: 100,
+    });
+
+    $("#sliderBlue").slider({
+        orientation: "vertical",
+        range: "max",
+        min: 0,
+        max: 255,
+        value: 90,
+    });
+
     $("#slider1").slider({
         value: 100,
         min: 1,

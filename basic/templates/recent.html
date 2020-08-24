@@ -2,6 +2,7 @@
 
 {% block content %}
 <a href="/">Back to simulation page</a>
+    {% csrf_token %}
     {% for plot in plots %}
         <div class="container">
             <div class="first">

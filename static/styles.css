@@ -1,14 +1,20 @@
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 body {
   background-color: rgb(100, 100, 100);
 }
 
-.chart-container {
+#chart-container {
   width: 700px;
   height: 700px;
 }
 
 .container {
-  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .first {
@@ -44,7 +50,7 @@ input[type=button]{
 .lable {
   float: left;
   width: 120px;
-  color: rgb(135, 211, 139);;
+  color: rgb(135, 211, 139);
 }
 
 .vote {
@@ -61,20 +67,12 @@ input[type=button]{
   background-position: 0 2px;
 }
 
-.colorSlider{
-  float: left;
-  height: 200px;
+.jscolor{
+  width: 60px;
   margin: 5px;
 }
 
-#sliderRed{
-  background-color: red;
-}
-
-#sliderGreen{
-  background-color: green;
-}
-
-#sliderBlue{
-  background-color: blue;
+.text{
+  color: rgb(135, 211, 139);
+  margin: 5px;
 }

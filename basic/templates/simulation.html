@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <a href="/recent/">Recent plots</a>
-    <div>
-      <canvas id="myChart"> </canvas>
-    </div>
+
     <div class="container">
-        <div id="sliderRed" class="colorSlider"></div>
-        <div id="sliderGreen" class="colorSlider"></div>
-        <div id="sliderBlue" class="colorSlider"></div>
+        <div id="chart-container">
+            <canvas id="myChart"> </canvas>
+        </div>
+        <div>
+            <span class="text">Choose your color:</span>
+            <input data-jscolor="{value:'#79FF5E'}">
+        </div>
     </div>
-    <div>
+
+    <div class= "container">
         <form data-url="{% url 'simulation_url' %}" method="post" id="simulateForm">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
@@ -35,9 +37,10 @@
             <input type="button" value="Save" id="saveButton">
         </form>
     </div>
-    <div class="clear">
+    <div class="clear"></div>
+    <div class= "container">
         <br>
-        <h2>Top upvoted</h2>
+        <h1>Top upvoted</h1>
     </div>
     <div>
         {% for plot in top %}
@@ -62,5 +65,11 @@
     </div>
     {% load static %}
     <script src="{% static 'plot.js' %}"></script>
+    <script src="{% static 'jscolor.js' %}"></script>
+    <script>
+        jscolor.presets.default = {
+            format:'hex', previewSize:56, smartPosition:false, width:180, 
+            height:180, shadow:false};
+    </script>
 
 {% endblock  %}

@@ -15,10 +15,11 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'scatter',
 
+
     data: {
         datasets: [{
             showLine: true,
-            borderColor: 'rgb(237, 0, 140)',
+            borderColor: '#79FF5E',
             radius: 0,
             fill: false,
             data: generateCurve(100,100,90,1),
@@ -48,10 +49,8 @@ $(function() {
             success: function (response)
             {   
                 chart.data.datasets[0].data = generateCurve(response.x_frequency, response.y_frequency, response.phase, response.simulation_time);
-                red = $("#sliderRed").slider("value");
-                green = $("#sliderGreen").slider("value");
-                blue = $("#sliderBlue").slider("value");
-                chart.data.datasets[0].borderColor = `rgb(${red}, ${green}, ${blue})`;
+                color = $(".jscolor").val();
+                chart.data.datasets[0].borderColor = color;
                 chart.update();
             }
         });
@@ -80,31 +79,6 @@ $(function() {
     $("#id_simulation_time").val('1')
 
     //Sliders handling functions
-
-    
-    $("#sliderRed").slider({
-        orientation: "vertical",
-        range: "max",
-        min: 0,
-        max: 255,
-        value: 100,
-    });
-
-    $("#sliderGreen").slider({
-        orientation: "vertical",
-        range: "max",
-        min: 0,
-        max: 255,
-        value: 100,
-    });
-
-    $("#sliderBlue").slider({
-        orientation: "vertical",
-        range: "max",
-        min: 0,
-        max: 255,
-        value: 90,
-    });
 
     $("#slider1").slider({
         value: 100,

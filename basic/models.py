@@ -19,7 +19,7 @@ class LissajousCurve(models.Model):
             MinValueValidator(0)
         ])
     simulation_time = models.FloatField(validators=[
-            MaxValueValidator(10),
+            MaxValueValidator(6.3),
             MinValueValidator(0.1)
         ])
     upvotes = models.IntegerField(default=0,

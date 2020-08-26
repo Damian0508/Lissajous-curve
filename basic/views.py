@@ -18,20 +18,6 @@ class Simulation(View):
         top_upvotes = LissajousCurve.objects.all().order_by('-upvotes')[:6]
         return render(request, 'simulation.html', {'form': form, 'top': top_upvotes})
 
-    def post(self, request):
-        form = CurveParamaterForm(request.POST)
-        if form.is_valid():
-            data = {
-                'x_frequency': form.cleaned_data['x_frequency'],
-                'y_frequency': form.cleaned_data['y_frequency'],
-                'phase': form.cleaned_data['phase'],
-                'simulation_time': form.cleaned_data['simulation_time'],
-            }
-
-            return JsonResponse(data, status=200)
-        else:
-            return render(request, 'simulation.html', {'form': form})
-
 
 class Recent(View):
     def get(self, request):

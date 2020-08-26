@@ -11,6 +11,20 @@ function generateCurve(xFrequency, yFrequency, phase, simulationTime) {
     return values;
 }
 
+function simulate() {
+    // var serializedData = $("#simulateForm").serialize();
+
+    x_frequency = $("#id_x_frequency").val()
+    y_frequency = $("#id_y_frequency").val()
+    phase = $("#id_phase").val()
+    simulation_time = $("#id_simulation_time").val()
+    chart.data.datasets[0].data = generateCurve(x_frequency, y_frequency, phase, simulation_time);
+    color = $(".jscolor").val();
+
+    chart.data.datasets[0].borderColor = color;
+    chart.update();
+}
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'scatter',
@@ -19,14 +33,13 @@ var chart = new Chart(ctx, {
     data: {
         datasets: [{
             showLine: true,
-            borderColor: '#79FF5E',
+            borderColor: '#10E3FF',
             radius: 0,
             fill: false,
             data: generateCurve(100,100,90,1),
         }]
     },
     options: {
-        responsive: true,
         events: [],
         tooltips: {enabled: false},
         animation: {duration: 0},
@@ -38,25 +51,12 @@ var chart = new Chart(ctx, {
 
 $(function() {
 
-    $("#simulateButton").click(function() {
-        //simulation validation here
-        var serializedData = $("#simulateForm").serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: $("#simulateForm").data('url'),
-            data: serializedData,
-            success: function (response)
-            {   
-                chart.data.datasets[0].data = generateCurve(response.x_frequency, response.y_frequency, response.phase, response.simulation_time);
-                color = $(".jscolor").val();
-                chart.data.datasets[0].borderColor = color;
-                chart.update();
-            }
-        });
+    $("#simulateButton").click(function () {
+        simulate();
     });
 
     $("#saveButton").click(function() {
+        simulate();
         var canvas = document.getElementById('myChart');
         document.getElementById("id_image").value = canvas.toDataURL();
         var serializedData = $("#simulateForm").serialize();
@@ -87,11 +87,13 @@ $(function() {
         step: 1,
         slide: function(event, ui) {
             $("#id_x_frequency").val(ui.value);
+            simulate();
         }
     });
 
     $("#id_x_frequency").change(function () {
         var value = this.value;
+        simulate();
         $("#slider1").slider("value", parseInt(value));
     });
 
@@ -102,11 +104,13 @@ $(function() {
         step: 1,
         slide: function(event,ui) {
             $("#id_y_frequency").val(ui.value);
+            simulate();
         }
     });
 
     $("#id_y_frequency").change(function () {
         var value = this.value;
+        simulate();
         $("#slider2").slider("value", parseInt(value));
     });
 
@@ -117,26 +121,30 @@ $(function() {
         step: 1,
         slide: function(event,ui) {
             $("#id_phase").val(ui.value);
+            simulate();
         }
     });
 
     $("#id_phase").change(function () {
         var value = this.value;
+        simulate();
         $("#slider3").slider("value", parseInt(value));
     });
     
     $("#slider4").slider({
         value: 1,
         min: 0.1,
-        max: 10,
+        max: 6.3,
         step: 0.1,
         slide: function(event,ui) {
             $("#id_simulation_time").val(ui.value);
+            simulate();
         }
     });
 
     $("#id_simulation_time").change(function () {
         var value = this.value;
+        simulate();
         $("#slider4").slider("value", parseInt(value));
     });
     

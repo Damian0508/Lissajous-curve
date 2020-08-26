@@ -9,7 +9,7 @@
         </div>
         <div>
             <span class="text">Choose your color:</span>
-            <input data-jscolor="{value:'#79FF5E'}">
+            <input data-jscolor="{value:'#10E3FF'}">
         </div>
     </div>
 
@@ -34,7 +34,7 @@
                 <br>
             {% endfor %}
             <input type="button" value="Simulate" id="simulateButton">
-            <input type="button" value="Save" id="saveButton">
+            <input type="submit" value="Save" id="saveButton">
         </form>
     </div>
     <div class="clear"></div>
@@ -54,7 +54,7 @@
                 <p>phase: {{ plot.phase }}</p>
                 <p>simulation time: {{ plot.simulation_time }}</p>
                 <p id="{{ plot.id }}">
-                    Upvotes: {{ plot.upvotes }}
+                    {{ plot.upvotes }}
                 </p>
                 <span class="vote" id="{{ plot.id }}"</span>
             </div>

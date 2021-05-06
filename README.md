@@ -1,7 +1,7 @@
 ### Lissajous-curve - web app
 ***
 Features:
-+ Generate Lissajous curve with changeable parameters like:
++ Generate Lissajous curve with changeable parameters such as:
   + x-axis frequency
   + y-axis frequency
   + phase
